@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.madshines.mapper.PicMapper">
+	<insert id="insertPic" parameterType="pic">
+		insert into pic(id,path) values (default,#{path})
+	</insert>
+	<select id="selectPics" resultType="pic">
+		select * from pic
+	</select>
+	<!-- <delete id="deleteById" parameterType="id">
+		delete * from pic where id=#{id}
+	</delete> -->
+</mapper>

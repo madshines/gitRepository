@@ -1,0 +1,4 @@
+com\madshines\mapper\AllPic.class
+com\madshines\service\impl\PicServiceImpl.class
+com\madshines\controller\PicController.class
+com\madshines\service\PicService.class
