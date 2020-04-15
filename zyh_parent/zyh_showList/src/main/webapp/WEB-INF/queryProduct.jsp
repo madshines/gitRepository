@@ -9,21 +9,16 @@
 </head>
 <body>
 	<table border="1">
-		<thead align="center">产品信息列表</thead>
+		<thead align="center">列表</thead>
 		<tbody>
-		<c:forEach items="${selectProduct }" var="sel">
+		<c:forEach items="${queryProduct }" var="que">
 			<tr>
-				<td>${sel.id }</td>
-				<td>${sel.name }</td>
-				<td>${sel.origin }</td>
+				<td>${que.id }</td>
+				<td>${que.name }</td>
+				<td>${que.origin }</td>
 			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
-	
-	<form action="queryProduct" method="post">
-		<input type="text" name="name"/>
-		<input type="submit" value="搜索">
-	</form>
 </body>
 </html>

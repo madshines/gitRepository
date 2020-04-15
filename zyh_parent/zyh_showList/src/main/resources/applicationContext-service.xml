@@ -15,4 +15,8 @@
 
 	<context:component-scan base-package="com.madshines.service.impl"></context:component-scan>
 	
+	<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+		<constructor-arg value="http://localhost:8080/solr/collection1"/>
+	</bean>
+	
 </beans>
