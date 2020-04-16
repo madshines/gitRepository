@@ -7,7 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h2>插入键值</h2>
 <form action="setString" method="post">
+	<input type="text" name="str"/>
+	<input type="submit" value="提交"/>
+</form>
+
+<h2>根据键查找键值</h2>
+<form action="getString" method="post">
 	<input type="text" name="str"/>
 	<input type="submit" value="提交"/>
 </form>
