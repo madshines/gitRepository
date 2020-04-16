@@ -33,7 +33,7 @@ public class ProductServiceImpl implements ProductService{
 		return insertProduct;
 	}
 	@Override
-	public List<Product> selectProduct() throws SolrServerException, IOException {
+	public List<Product> selectProduct(){
 		// TODO Auto-generated method stub
 		List<Product> selectProduct = productMapper.selectProduct();
 //		for (Product product : selectProduct) {
@@ -44,13 +44,23 @@ public class ProductServiceImpl implements ProductService{
 //			solrServer.add(document);
 //		}
 //		solrServer.commit();	
-//		SolrQuery solrQuery=new SolrQuery();
-//		solrQuery.add("p", "name:白色");
-//		QueryResponse query = solrServer.query(solrQuery);
-//		SolrDocumentList results = query.getResults();
-//		for (SolrDocument solrDocument : results) {
-//			
-//		}
 		return selectProduct;
 	}
+	@Override
+	public SolrDocumentList queryProduct(String name) {
+		// TODO Auto-generated method stub
+		SolrQuery solrQuery=new SolrQuery();
+		solrQuery.add("q", "name:"+name);
+		QueryResponse query;
+		SolrDocumentList results =null;
+		try {
+			query = solrServer.query(solrQuery);
+			query.getResults();
+		} catch (SolrServerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return results;
+	}
+	
 }

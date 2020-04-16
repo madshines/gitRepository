@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.madshines.pojo.Product;
 import com.madshines.service.ProductService;
@@ -51,21 +52,21 @@ public class ProductController {
 		return modelAndView;
 	}
 	@RequestMapping("queryProduct")
-	public ModelAndView queryProduct(String name) throws SolrServerException{
-		System.out.println(name);
+	public ModelAndView queryProduct(String name){
+		Product product=null;
 		ModelAndView modelAndView=new ModelAndView();
-		SolrQuery solrQuery=new SolrQuery();
-		solrQuery.add("p", "name:白色");
-		QueryResponse query = solrServer.query(solrQuery);
-		SolrDocumentList results = query.getResults();
-		for (SolrDocument solrDocument : results) {
-			System.out.println(solrDocument.get("id"));
-			System.out.println(solrDocument.get("name"));
-			System.out.println(solrDocument.get("origin"));
-			
-			//modelAndView.addObject("queryProduct", solrDocument);
+		SolrDocumentList queryProduct = productService.queryProduct(name);
+		for (SolrDocument solrDocument : queryProduct) {
+			product=new Product();
+			int id = Integer.parseInt((String)solrDocument.get("id"));
+			product.setId(id);
+			String name1 = solrDocument.get("name").toString();
+			product.setName(name1);
+			String origin = solrDocument.get("origin").toString();
+			product.setOrigin(origin);
+			modelAndView.addObject("pro", product);
 		}
-		//modelAndView.setViewName("queryProduct");
+		modelAndView.setView(new MappingJackson2JsonView());;
 		return modelAndView;
 	}
 }
