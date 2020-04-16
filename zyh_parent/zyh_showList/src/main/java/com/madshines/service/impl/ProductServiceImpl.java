@@ -49,6 +49,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public SolrDocumentList queryProduct(String name) {
 		// TODO Auto-generated method stub
+		System.out.println(name);
 		SolrQuery solrQuery=new SolrQuery();
 		solrQuery.add("q", "name:"+name);
 		QueryResponse query;
