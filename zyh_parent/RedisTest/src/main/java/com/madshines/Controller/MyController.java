@@ -13,14 +13,14 @@ import com.madshines.redisUtils.RedisService;
 public class MyController {
 	@Autowired
 	private RedisService redisService;
-	String str=null;
+	//String str=null;
 	@RequestMapping("setString")
 	public ModelAndView setString(@RequestParam("str") String str1){
 		ModelAndView modelAndView=new ModelAndView();
 		boolean sSet = redisService.set("str1", str1);
 		if (sSet) {
 			modelAndView.addObject("msg", "添加成功");
-			str=str1;
+			//str=str1;
 		}else {
 			modelAndView.addObject("msg", "添加失败");
 		}
@@ -28,9 +28,11 @@ public class MyController {
 		return modelAndView;
 	}
 	@RequestMapping("getString")
-	public ModelAndView getString(String key){
+	public ModelAndView getString(@RequestParam("key")String key){
+		System.out.println(key);
 		ModelAndView modelAndView=new ModelAndView();
-		Object str = redisService.get(key);
+		String str = (String)redisService.get(key);
+		System.out.println(str);
 		modelAndView.addObject("str", str);		
 		modelAndView.setView(new MappingJackson2JsonView());
 		return modelAndView;

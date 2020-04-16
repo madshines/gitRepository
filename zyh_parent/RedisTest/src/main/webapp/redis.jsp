@@ -15,7 +15,7 @@
 
 <h2>根据键查找键值</h2>
 <form action="getString" method="post">
-	<input type="text" name="str"/>
+	<input type="text" name="key"/>
 	<input type="submit" value="提交"/>
 </form>
 </body>
