@@ -18,5 +18,26 @@
 	<input type="text" name="key"/>
 	<input type="submit" value="提交"/>
 </form>
+
+<h2>查看list长度</h2>
+<form action="getListSize" method="post">
+	<input type="text" name="key"/>
+	<input type="submit" value="提交"/>
+</form>
+
+<h2>查看list内容</h2>
+<form action="getListContext" method="post">
+	<input type="text" name="key"/>
+	<input type="text" name="begin"/>
+	<input type="text" name="end"/>
+	<input type="submit" value="提交"/>
+</form>
+
+<h2>查看list内容</h2>
+<form action="getListContextIndex" method="post">
+	<input type="text" name="key"/>
+	<input type="text" name="index"/>
+	<input type="submit" value="提交"/>
+</form>
 </body>
 </html>
